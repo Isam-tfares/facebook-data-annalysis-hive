@@ -128,129 +128,66 @@ LOCATION '/facebookData/';
 
 ```
 
-
-
 ## Data Analysis Queries
-
-
 
 Here are the Hive queries used for the analysis:
 
-
-
 1. **Total Number of Users:**
-
-   ```sql
-
-   SELECT COUNT(*) AS total_users FROM fb;
-
-   ```
-
-
+   ```sql
+   SELECT COUNT(*) AS total_users FROM fb;
+   ```
 
 2. **Number of Users Above Age of 25:**
-
-   ```sql
-
-   SELECT COUNT(*) AS users_above_25 FROM fb WHERE age > 25;
-
-   ```
-
-
+   ```sql
+   SELECT COUNT(*) AS users_above_25 FROM fb WHERE age > 25;
+   ```
 
 3. **Comparison of Friend Count by Gender:**
-
-   ```sql
-
-   SELECT gender, AVG(friend_count) AS avg_friends
-
-   FROM fb
-
-   GROUP BY gender;
-
-   ```
-
-
+   ```sql
+   SELECT gender, AVG(friend_count) AS avg_friends
+   FROM fb
+   GROUP BY gender;
+   ```
 
 4. **Likes Received by Age Group:**
-
-   ```sql
-
-   SELECT CASE
-
-              WHEN age BETWEEN 18 AND 25 THEN 'Young'
-
-              ELSE 'Old'
-
-          END AS age_group,
-
-          AVG(likes_received) AS avg_likes_received
-
-   FROM fb
-
-   GROUP BY CASE
-
-                 WHEN age BETWEEN 18 AND 25 THEN 'Young'
-
-                 ELSE 'Old'
-
-             END;
-
-   ```
-
-
+   ```sql
+   SELECT CASE
+              WHEN age BETWEEN 18 AND 25 THEN 'Young'
+              ELSE 'Old'
+          END AS age_group,
+          AVG(likes_received) AS avg_likes_received
+   FROM fb
+   GROUP BY CASE
+                 WHEN age BETWEEN 18 AND 25 THEN 'Young'
+                 ELSE 'Old'
+             END;
+   ```
 
 5. **User Count by Birthday Month:**
-
-   ```sql
-
-   SELECT dob_month AS birthday_month, COUNT(*) AS user_count
-
-   FROM fb
-
-   GROUP BY dob_month
-
-   ORDER BY dob_month;
-
-   ```
-
-
+   ```sql
+   SELECT dob_month AS birthday_month, COUNT(*) AS user_count
+   FROM fb
+   GROUP BY dob_month
+   ORDER BY dob_month;
+   ```
 
 6. **Young Members’ Browsing Device Preference:**
-
-   ```sql
-
-   SELECT device_type, COUNT(*) AS user_count
-
-   FROM fb
-
-   WHERE age BETWEEN 18 AND 25
-
-   GROUP BY device_type;
-
-   ```
-
-
+   ```sql
+   SELECT device_type, COUNT(*) AS user_count
+   FROM fb
+   WHERE age BETWEEN 18 AND 25
+   GROUP BY device_type;
+   ```
 
 7. **Adult Members’ Browsing Device Preference:**
-
-   ```sql
-
-   SELECT device_type, COUNT(*) AS user_count
-
-   FROM fb
-
-   WHERE age > 25
-
-   GROUP BY device_type;
-
-   ```
-
-
-
+   ```sql
+   SELECT device_type, COUNT(*) AS user_count
+   FROM fb
+   WHERE age > 25
+   GROUP BY device_type;
+   ```
+   
 ## Usage
-
-
 
 1. **Run Hive Queries**: Execute the provided queries in your Hive environment to perform the analysis.
 
